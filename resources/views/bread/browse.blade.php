@@ -80,6 +80,13 @@
                                                 @else
                                                 {{ $data->{$row->field} }}
                                                 @endif
+                                            @elseif($row->type == 'radio_btn')
+                                                @php $key = "" . $data->{$row->field} @endphp
+                                                @foreach ($options->options as $option) 
+                                                    @if($data->{$row->field} == $loop->index)
+                                                        <span>{{ $option}}</span>
+                                                    @endif
+                                                @endforeach
                                             @elseif($row->type == 'text')
                                             <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                             @elseif($row->type == 'text_area')

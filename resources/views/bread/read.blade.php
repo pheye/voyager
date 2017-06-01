@@ -69,6 +69,13 @@
                                 @else
                                 {{ $dataTypeContent->{$row->field} }}
                                 @endif
+                            @elseif($row->type == 'radio_btn')
+                                @php $key = "" . $dataTypeContent->{$row->field} @endphp
+                                @foreach ($rowDetails->options as $option) 
+                                    @if($dataTypeContent->{$row->field} == $loop->index)
+                                        <p>{{ $option}}</p>
+                                    @endif
+                                @endforeach
                             @elseif($row->type == 'rich_text_box')
                                 <p>{{ strip_tags($dataTypeContent->{$row->field}, '<b><i><u>') }}</p>
                             @else
@@ -87,5 +94,4 @@
 @stop
 
 @section('javascript')
-
 @stop
