@@ -29,7 +29,7 @@
                     <div class="panel-body" style="padding:30px;">
 
                         <div class="dd">
-                            {!! Menu::display($menu->name, 'admin') !!}
+                            {!! \TCG\Voyager\Models\Menu::display($menu->name, 'admin') !!}
                         </div>
 
                     </div>
