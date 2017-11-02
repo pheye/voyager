@@ -23,6 +23,7 @@
                         <table id="dataTable" class="row table table-hover">
                             <thead>
                                 <tr>
+                                    <th>勾选</th>
                                     @foreach($dataType->browseRows as $rows)
                                     <th>{{ $rows->display_name }}</th>
                                     @endforeach
@@ -32,6 +33,11 @@
                             <tbody>
                                 @foreach($dataTypeContent as $data)
                                 <tr>
+                                    @if (isset($data['id']))
+                                    <td> <input type="checkbox" name="voyager.selects[]" value="{{$data['id']}}" /> </td>
+                                    @else
+                                    <td>&nbsp;</td>
+                                    @endif
                                     @foreach($dataType->browseRows as $row)
                                         <td>
                                             <?php $options = json_decode($row->details); ?>
@@ -121,7 +127,7 @@
                         </table>
                         @if (isset($dataType->server_side) && $dataType->server_side)
                             <div class="pull-left">
-                                <div role="status" class="show-res" aria-live="polite">Showing {{ $dataTypeContent->firstItem() }} to {{ $dataTypeContent->lastItem() }} of {{ $dataTypeContent->total() }} entries</div>
+                                <div role="status" class="show-res" aria-live="polite">{{ trans('voyager::bread.summary', ['first' =>  $dataTypeContent->firstItem(),  'last' =>  $dataTypeContent->lastItem(), 'total' =>  $dataTypeContent->total()]) }}</div>
                             </div>
                             <div class="pull-right">
                                 {{ $dataTypeContent->links() }}

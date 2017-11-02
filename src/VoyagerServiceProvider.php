@@ -84,6 +84,8 @@ class VoyagerServiceProvider extends ServiceProvider
         $event->listen('voyager.alerts.collecting', function () {
             $this->addStorageSymlinkAlert();
         });
+
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'voyager');
     }
 
     /**

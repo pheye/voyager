@@ -275,4 +275,5 @@ class VoyagerBreadController extends Controller
 
         return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
     }
+
 }
