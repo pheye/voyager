@@ -1,3 +1,11 @@
+# 改造说明
+
+`Voyager`是个很优秀的项目，然而却有一些问题限制了它的使用：
+
+- 仍然是`jQuery`+前后端混合那套，所以前端很难扩展
+- `BREAD`控制器不支持搜索、批量操作等功能
+- `CMS`方面，编辑器功能过弱，而在`SEO`等相关设置上又过于繁琐
+
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
 <p align="center">
