@@ -33,6 +33,7 @@ Route::group(['as' => 'voyager.'], function () {
         try {
             foreach (DataType::all() as $dataTypes) {
                 Route::resource($dataTypes->slug, $namespacePrefix.'VoyagerBreadController');
+                Route::post($dataTypes->slug . '/batch', $namespacePrefix. 'VoyagerBreadController@batchAction')->name($dataTypes->slug . '.batch');
             }
         } catch (\InvalidArgumentException $e) {
             throw new \InvalidArgumentException("Custom routes hasn't been configured because: ".$e->getMessage(), 1);

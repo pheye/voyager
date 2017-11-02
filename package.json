@@ -1,0 +1,28 @@
+{
+  "name": "voyager",
+  "version": "1.0.0",
+  "description": "LIUWENCAN's npm package",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pheye/voyager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pheye/voyager/issues"
+  },
+  "homepage": "https://github.com/pheye/voyager#readme",
+  "dependencies": {
+    "animate": "^1.0.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-switch": "^3.3.4",
+    "jquery": "^3.2.1"
+  }
+}

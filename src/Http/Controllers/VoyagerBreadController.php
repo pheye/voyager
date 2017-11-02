@@ -276,4 +276,28 @@ class VoyagerBreadController extends Controller
         return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
     }
 
+
+    private function back($slug, $message, $alertType = 'success')
+    {
+        $data = [
+            'message' => $message,
+            'alert-type' => $alertType
+        ];
+        return redirect()->route("voyager.{$slug}.index")->with($data);
+    }
+
+    public function batchAction(Request $request)
+    {
+        $slug = $this->getSlug($request);
+        if (!$request->has('action'))
+            return $this->back($slug, trans('voyager::messages.error_parameter', ['parameter' => 'action']), 'error');
+        
+        /* dd($request->all()); */
+        if ($request->action == 'delete') {
+            foreach ($request->voyager_selects as $id) {
+                $this->destroy($request, $id);
+            }
+        }
+        return $this->back($slug, trans('voyager::bread.batch_completed'));
+    }
 }

@@ -20,6 +20,12 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-body table-responsive">
+
+                    <form role="form"
+                            action="{{ route('voyager.'.$dataType->slug.'.batch') }}"
+                            method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" action="delete" />
                         <table id="dataTable" class="row table table-hover">
                             <thead>
                                 <tr>
@@ -107,7 +113,7 @@
                                     <td class="no-sort no-click" id="bread-actions">
                                         @if (Voyager::can('delete_'.$dataType->name))
                                             <a href="javascript:;" title="Delete" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
-                                                <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Delete</span>
+                                                <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">{{trans('voyager::bread.delete')}}</span>
                                             </a>
                                         @endif
                                         @if (Voyager::can('edit_'.$dataType->name))
@@ -133,6 +139,14 @@
                                 {{ $dataTypeContent->links() }}
                             </div>
                         @endif
+                        <div class="clearfix" ></div>
+                        <div>
+                        @if (Voyager::can('delete_'.$dataType->name))
+                            <input type="hidden" name="action" value="delete" />
+                            <input type="submit" title="Delete" class="btn btn-sm btn-danger" value="{{trans('voyager::bread.batch_delete')}}" />
+                        @endif
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
