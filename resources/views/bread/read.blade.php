@@ -78,6 +78,10 @@
                                 @endforeach
                             @elseif($row->type == 'rich_text_box')
                                 <p>{{ strip_tags($dataTypeContent->{$row->field}, '<b><i><u>') }}</p>
+                            @elseif($row->type == 'multiple_images')
+                                @foreach (json_decode($dataTypeContent->{$row->field}) as $image) 
+                                <p>{{$image}}</p>
+                                @endforeach
                             @else
                                 <p>{{ $dataTypeContent->{$row->field} }}</p>
                             @endif

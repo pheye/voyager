@@ -33,7 +33,7 @@
                                     @foreach($dataType->browseRows as $rows)
                                     <th>{{ $rows->display_name }}</th>
                                     @endforeach
-                                    <th class="actions">Actions</th>
+                                    <th class="actions">{{trans('voyager::bread.actions')}}</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -128,7 +128,7 @@ abstract class Controller extends BaseController
             /********** FILE TYPE **********/
             case 'file':
                 if ($file = $request->file($row->field)) {
-                    $filename = Str::random(20);
+                    $filename = md5_file($file);//Str::random(20);
                     $path = $slug.'/'.date('F').date('Y').'/';
                     $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
 
@@ -146,11 +146,12 @@ abstract class Controller extends BaseController
                      */
                     $filesPath = [];
                     foreach ($files as $key => $file) {
-                        $filename = Str::random(20);
+                        // 防止总是上传相同的文件
+                        $filename = md5_file($file);//Str::random(20);
                         $path = $slug.'/'.date('F').date('Y').'/';
                         array_push($filesPath, $path.$filename.'.'.$file->getClientOriginalExtension());
                         $filePath = $path.$filename.'.'.$file->getClientOriginalExtension();
-                        $request->file($row->field)[$key]->storeAs(config('voyager.storage.subfolder').$path, $filename.'.'.$file->getClientOriginalExtension());
+                        $request->file($row->field)[$key]->storeAs(config('voyager.storage.disk').'/'.$path, $filename.'.'.$file->getClientOriginalExtension());
                     }
 
                     return json_encode($filesPath);

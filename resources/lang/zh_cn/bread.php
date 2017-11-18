@@ -7,5 +7,6 @@ return [
     'add' => '添加',
     'view' => '查看',
     'batch_delete' => '批量删除',
-    'batch_completed' => '批量处理完成'
+    'batch_completed' => '批量处理完成',
+    'actions' => '操作'
 ];
