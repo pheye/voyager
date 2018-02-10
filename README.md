@@ -13,8 +13,9 @@
 
 具体修复问题：
 
-- Voyager::settings模块增加Boolean Type，增加voyager::settings <key>/ voyager::settings <name> <key> <type> -s命令获取和配置参数
-
+- `Voyager::settings`模块增加`Boolean Type`，增加`voyager::settings <key>/ voyager::settings <name> <key> <type> -s`命令获取和配置参数
+- dropdown类型：如果使用了外键，比如users表的`role_id`指向Role,则User Model必须存在`public function role_id()`,但是一般我们都使用的是`public function role()`，通过在`details`的`relationship`下面增加`method: "role"`即可覆盖默认值。
+- Number类型：增加"step: 0.01" 参数，以支持小数点的编辑。
 
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
