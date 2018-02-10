@@ -7,6 +7,14 @@
 - `CMS`方面，编辑器功能过弱，而在`SEO`等相关设置上又过于繁琐
 - 提示语言没有使用多语言机制
 - `BREAD`开启`Server-Side`时，不支持排序
+- 存在许多很初级的BUG：比如`multiple images`类型，只能增加不能删除，查看详情时也不能正常显示等等
+
+等待官方修复太慢，同时按照目前发展趋势来看，与自己的期望还是有一些距离，于是自己做整改。解决上述问题。
+
+具体修复问题：
+
+- Voyager::settings模块增加Boolean Type，增加voyager::settings <key>/ voyager::settings <name> <key> <type> -s命令获取和配置参数
+
 
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
