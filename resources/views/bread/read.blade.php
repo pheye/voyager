@@ -83,7 +83,8 @@
                                 <p>{{$image}}</p>
                                 @endforeach
                             @else
-                                <p>{{ $dataTypeContent->{$row->field} }}</p>
+                                @php $realStr = is_array($dataTypeContent->{$row->field}) ? json_encode($dataTypeContent->{$row->field}) : $dataTypeContent->{$row->field} @endphp
+                                <p>{{ $realStr }}</p>
                             @endif
                         </div><!-- panel-body -->
                         @if(!$loop->last)

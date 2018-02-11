@@ -102,7 +102,8 @@
                                             @elseif($row->type == 'text')
                                             <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                             @elseif($row->type == 'text_area')
-                                            <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                                                @php $realStr = is_array($data->{$row->field}) ? json_encode($data->{$row->field}) : $data->{$row->field} @endphp
+                                            <div class="readmore">{{ strlen( $realStr) > 200 ? substr($realStr, 0, 200) . ' ...' : $realStr }}</div>
                                             @elseif($row->type == 'rich_text_box')
                                             <div class="readmore">{{ strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
                                             @else

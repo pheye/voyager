@@ -273,6 +273,9 @@ abstract class Controller extends BaseController
                 if (isset($options->null)) {
                     return $value == $options->null ? null : $value;
                 }
+                if (isset($options->json)) {
+                    return json_decode($value);
+                }
 
                 return $value;
         }
