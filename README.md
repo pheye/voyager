@@ -18,6 +18,7 @@
 - Number类型：增加"step: 0.01" 参数，以支持小数点的编辑。
 - Textarea类型：支持JSON格式的处理，当数据库字段类型为JSON，并且在Laravel中设置`protected $casts=['content' => 'json']`这样的处理时，Voyager会编辑时会报错。通过在选项中增加`{"json": true}`，即可支持JSON数据的直接编辑。
 
+
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
 <p align="center">
