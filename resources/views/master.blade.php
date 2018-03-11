@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 
+    <!-- 目前手动引用vue，后续它们将被打包进webpack中 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+
     @yield('css')
 
     <!-- Voyager CSS -->
@@ -46,7 +49,6 @@
 </head>
 
 <body class="flat-blue">
-
 <div id="voyager-loader">
     <?php $admin_loader_img = Voyager::setting('admin_loader', ''); ?>
     @if($admin_loader_img == '')
@@ -86,6 +88,8 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
         @endif
         - {{ Voyager::getVersion() }}
     </div>
+<!-- vue 示例 -->
+<!-- @{{ message }} -->
 </footer>
 <!-- Javascript Libs -->
 
@@ -128,5 +132,13 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
     @endif
 </script>
 @yield('javascript')
+<!-- <script type="text/javascript"> -->
+<!-- var app = new Vue({ -->
+<!--     el: "#abcdefg", -->
+<!--     data: { -->
+<!--         message: "Hello" -->
+<!--     } -->
+<!-- }); -->
+<!-- </script> -->
 </body>
 </html>
