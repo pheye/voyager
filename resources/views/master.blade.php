@@ -37,6 +37,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 
     <!-- 目前手动引用vue，后续它们将被打包进webpack中 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
 
     @yield('css')
@@ -65,7 +66,7 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
 }
 ?>
 
-<div class="app-container">
+<div class="app-container" id="vue-app">
     <div class="fadetoblack visible-xs"></div>
     <div class="row content-container">
         @include('voyager::dashboard.navbar')
@@ -132,13 +133,5 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
     @endif
 </script>
 @yield('javascript')
-<!-- <script type="text/javascript"> -->
-<!-- var app = new Vue({ -->
-<!--     el: "#abcdefg", -->
-<!--     data: { -->
-<!--         message: "Hello" -->
-<!--     } -->
-<!-- }); -->
-<!-- </script> -->
 </body>
 </html>
