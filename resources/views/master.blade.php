@@ -38,7 +38,7 @@
 
     <!-- 目前手动引用vue，后续它们将被打包进webpack中 -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.min.js"></script>
 
     @yield('css')
 
