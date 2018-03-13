@@ -40,11 +40,16 @@ class VoyagerBreadController extends Controller
             $model = app($dataType->model_name);
 
             $relationships = $this->getRelationships($dataType);
-
+            $builder = $model->with($relationships);                           
+            if ($request->has('order')) {   
+                $dir = substr($request->order, 0, 1);
+                $field = $dir == '-' ? substr($request->order, 1) : $request->order;
+                $builder = $builder->orderBy($field, $dir == '-' ? 'DESC' : 'ASC');
+            }
             if ($model->timestamps) {
-                $dataTypeContent = call_user_func([$model->with($relationships)->latest(), $getter]);
+                $dataTypeContent = call_user_func([$builder->latest(), $getter]);
             } else {
-                $dataTypeContent = call_user_func([$model->with($relationships)->orderBy('id', 'DESC'), $getter]);
+                $dataTypeContent = call_user_func([$builder->orderBy('id', 'DESC'), $getter]);
             }
 
             //Replace relationships' keys for labels and create READ links if a slug is provided.
