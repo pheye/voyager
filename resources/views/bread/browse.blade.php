@@ -10,6 +10,12 @@
                 <i class="voyager-plus"></i> Add New
             </a>
         @endif
+        <div style="float:right">
+            <form action="">
+            搜索域:
+            <input placeholder="请输入搜索内容"/>
+            </form>
+        </div>
     </h1>
 @stop
 
@@ -31,7 +37,11 @@
                                 <tr>
                                     <th>勾选</th>
                                     @foreach($dataType->browseRows as $rows)
-                                    <th>{{ $rows->display_name }}</th>
+                                    <th v-on:click="sort('{{$rows->field}}')" style="cursor:pointer">
+                                        <div v-if="field != '-{{$rows->field}}'" style="float:right"><fa-icon name="caret-up" :style="{'color': field == '{{$rows->field}}' ? 'red' : 'black' }"/></div>
+                                        <div v-if="field == '-{{$rows->field}}'" style="float:right"><fa-icon name="caret-down" :style="{'color': field == '-{{$rows->field}}' ? 'red' : 'black' }" /></div>
+                                        <div>{{ $rows->display_name }}</div>
+                                    </th>
                                     @endforeach
                                     <th class="actions">{{trans('voyager::bread.actions')}}</th>
                                 </tr>
@@ -184,6 +194,7 @@
 @stop
 
 @section('javascript')
+    <script src="{{ config('voyager.assets_path') }}/browse.js"></script>
     <!-- DataTables -->    
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
     <script src="{{ config('voyager.assets_path') }}/lib/js/dataTables.responsive.min.js"></script>

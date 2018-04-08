@@ -4,6 +4,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var isProduction = process.env.NODE_ENV === 'production';
 
+function resolve (dir) {                     
+  return path.join(__dirname,  dir)     
+} 
+
 module.exports = {
     devtool: isProduction ? false : 'source-map',
     entry: {
@@ -62,7 +66,7 @@ module.exports = {
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
-            exclude: /node_modules/,
+            include: [resolve('resources/assets/js'), resolve('node_modules/vue-awesome')],
             query: {
                 compact: false
             }
@@ -90,8 +94,9 @@ module.exports = {
         })
     ],
     resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.common.js',
-        }
+      extensions: ['.js', '.vue', '.json'],
+			alias: {                                 
+				'vue$': 'vue/dist/vue.esm.js'
+			}
     },
 }
