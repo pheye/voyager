@@ -17,7 +17,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './publishable/assets'),
         publicPath: '/dist/',
-        filename: !isProduction ? '[name].js' : '[name]-[hash].js'
+        filename: !isProduction ? '[name].js' : '[name].js'
         // chunkFilename: !isProduction ? '[name].js' : '[name]-[chunkhash].js',
     },
     module: {

@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development --watch",
-    "prod": "webpack --mode production",
+    "build": "NODE_ENV=production webpack --mode production",
     "lint": "eslint --ext .js,.vue resources/assets/js"
   },
   "repository": {
