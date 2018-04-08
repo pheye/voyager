@@ -2,8 +2,11 @@ import Vue from 'vue'
 import queryString from 'query-string'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.component('fa-icon', Icon)
+Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({
@@ -11,7 +14,9 @@ new Vue({
   data: function () {
     const parsed = queryString.parse(window.location.search)
     return {
-      field: parsed.order
+      field: parsed.order,
+      searchKey: '',
+      searchValue: ''
     }
   },
   methods: {
@@ -24,6 +29,14 @@ new Vue({
       }
       window.location.search = queryString.stringify(parsed)
       console.log('field', field, parsed)
+    },
+    search () {
+      console.log('values', this.searchKey, this.searchValue)
+      let parsed = {
+        searchKey: this.searchKey,
+        searchValue: this.searchValue
+      }
+      window.location.search = queryString.stringify(parsed)
     }
   }
 })

@@ -46,6 +46,9 @@ class VoyagerBreadController extends Controller
                 $field = $dir == '-' ? substr($request->order, 1) : $request->order;
                 $builder = $builder->orderBy($field, $dir == '-' ? 'DESC' : 'ASC');
             }
+            if ($request->has('searchKey') && $request->has('searchValue')) {
+                $builder = $builder->where($request->searchKey, 'like', '%'. $request->searchValue . '%');
+            }
             if ($model->timestamps) {
                 $dataTypeContent = call_user_func([$builder->latest(), $getter]);
             } else {

@@ -23,9 +23,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                use: 'css-loader'
-            })
+            loader: 'css-loader'
         }, {
             test: /\.scss$/,
             use: ExtractTextPlugin.extract({

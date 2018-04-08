@@ -10,11 +10,18 @@
                 <i class="voyager-plus"></i> Add New
             </a>
         @endif
-        <div style="float:right">
-            <form action="">
-            搜索域:
-            <input placeholder="请输入搜索内容"/>
-            </form>
+        <div style="float:right; margin-right:100px;">
+            <div class="form-group">
+                <select v-model="searchKey" class="form-control" placeholder="请选择搜索域">
+                    @foreach($dataType->browseRows as $row)
+                    <option value="{{$row->field}}">{{$row->display_name}} </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <input placeholder="请输入搜索内容" v-model="searchValue" class="form-control"/>
+            </div>
+            <button @click="search" class="btn btn-primary" :disabled="!searchKey && !searchValue">搜索</button>
         </div>
     </h1>
 @stop
