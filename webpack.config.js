@@ -7,14 +7,14 @@ var isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
     devtool: isProduction ? false : 'source-map',
     entry: {
-        home: ['./resources/assets/js/home.js'],
-        vendor: ['jquery', 'swiper', 'bootstrap', 'moment', 'js-url']
+        browse: ['./resources/assets/js/browse.js'],
+        vendor: ['moment', 'js-url']
     },
     output: {
         path: path.resolve(__dirname, './publishable/assets'),
         publicPath: '/dist/',
-        filename: !isProduction ? '[name].js' : '[name]-[hash].js',
-        chunkFilename: !isProduction ? '[name].js' : '[name]-[chunkhash].js',
+        filename: !isProduction ? '[name].js' : '[name]-[hash].js'
+        // chunkFilename: !isProduction ? '[name].js' : '[name]-[chunkhash].js',
     },
     module: {
         rules: [{
@@ -57,7 +57,8 @@ module.exports = {
                 formatter: require('eslint-friendly-formatter'),
                 failOnWarning:true,
                 failOnError: true
-            }
+            },
+            exclude: /node_modules/
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -74,23 +75,13 @@ module.exports = {
         }]
     },
     plugins: [
-         new webpack.DefinePlugin({
-            PRODUCTION: JSON.stringify(isProduction),
-            LOCALE: JSON.stringify('en'), // 当前Locale
-            DEFAULT_LOCALE: JSON.stringify('en') //默认Locale
-         }),
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: ['vendor']
         // }),
-        new ExtractTextPlugin(!isProduction ? '[name].css' : '[name]-[hash].css'),
+        // new ExtractTextPlugin(!isProduction ? '[name].css' : '[name]-[hash].css'),
         new ManifestPlugin({
             fileName: 'rev-manifest.json', // 该名称不可以改，Laravel 5.3需要引用该名称的文件
             baseName: '/'
-        }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
         }),
         new webpack.DefinePlugin({
             'process.env': {
