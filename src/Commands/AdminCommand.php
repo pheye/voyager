@@ -40,6 +40,15 @@ class AdminCommand extends Command
      */
     public function fire()
     {
+        return $this->handle();
+    }
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
+    public function handle()
+    {
         // Get or create user
         $user = $this->getUser(
             $this->option('create')
