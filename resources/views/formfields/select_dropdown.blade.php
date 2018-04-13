@@ -17,6 +17,7 @@
 
             @if(isset($options->options))
                 <optgroup label="Custom">
+
                 @foreach($options->options as $key => $option)
                     <option value="{{ $key }}" @if($default == $key && $selected_value === NULL){{ 'selected="selected"' }}@endif @if((string)$selected_value == (string)$key){{ 'selected="selected"' }}@endif>{{ $option }}</option>
                 @endforeach
@@ -38,6 +39,7 @@
             ?>
 
             <optgroup label="Relationship">
+                <option value="">--清空--</option>
             @foreach($relationshipOptions as $relationshipOption)
                 <option value="{{ $relationshipOption->{$options->relationship->key} }}" @if($default == $relationshipOption->{$options->relationship->key} && $selected_value === NULL){{ 'selected="selected"' }}@endif @if($selected_value == $relationshipOption->{$options->relationship->key}){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->relationship->label} }}</option>
             @endforeach
