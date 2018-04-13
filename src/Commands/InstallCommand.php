@@ -60,6 +60,18 @@ class InstallCommand extends Command
      */
     public function fire(Filesystem $filesystem)
     {
+        return $this->handle($filesystem);
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @param \Illuminate\Filesystem\Filesystem $filesystem
+     *
+     * @return void
+     */
+    public function handle(Filesystem $filesystem)
+    {
         $this->info('Publishing the Voyager assets, database, and config files');
         $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class]);
         $this->call('vendor:publish', ['--provider' => ImageServiceProviderLaravel5::class]);
