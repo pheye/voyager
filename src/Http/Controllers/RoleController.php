@@ -1,63 +1,20 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use TCG\Voyager\Facades\Voyager;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use App\Role;
 use App\Policy;
 use TCG\Voyager\Models\Permission;
+use TCG\Voyager\Facades\Voyager;
 use Artisan;
 use Log;
 
-class VoyagerRoleController extends VoyagerBreadController
+class RoleController extends Controller
 {
-    // POST BR(E)AD
-    public function update(Request $request, $id)
-    {
-        Voyager::canOrFail('edit_roles');
-
-        $slug = $this->getSlug($request);
-
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
-        $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
-
-        $data->permissions()->sync($request->input('permissions', []));
-
-        return redirect()
-            ->route("voyager.{$dataType->slug}.index")
-            ->with([
-                'message'    => "Successfully Updated {$dataType->display_name_singular}",
-                'alert-type' => 'success',
-            ]);
-    }
-
-    // POST BRE(A)D
-    public function store(Request $request)
-    {
-        Voyager::canOrFail('add_roles');
-
-        $slug = $this->getSlug($request);
-
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        $data = new $dataType->model_name();
-        $this->insertUpdateData($request, $slug, $dataType->addRows, $data);
-
-        $data->permissions()->sync($request->input('permissions', []));
-
-        return redirect()
-            ->route("voyager.{$dataType->slug}.index")
-            ->with([
-                'message'    => "Successfully Added New {$dataType->display_name_singular}",
-                'alert-type' => 'success',
-            ]);
-    }
-
     /**
      * 显示权限和策略平面视图
      * 权限和策略正常情况不应该被删除
@@ -73,7 +30,7 @@ class VoyagerRoleController extends VoyagerBreadController
         foreach ($roles as $role) {
             $role->groupedPolicies = $role->generateGroupedPolicies();
         }
-        return view('voyager::permission_map', ['roles' => $roles, 'groupedPermissions' => $groupedPermissions, 'groupedPolicies' => $groupedPolicies, 'types' => Policy::TYPE_DESC]);
+        return view('admin.permission_map', ['roles' => $roles, 'groupedPermissions' => $groupedPermissions, 'groupedPolicies' => $groupedPolicies, 'types' => Policy::TYPE_DESC]);
     }
 
     /**
@@ -158,5 +115,4 @@ class VoyagerRoleController extends VoyagerBreadController
         /* Log::info(Artisan::output()); */
         return redirect()->back();
     }
-
 }

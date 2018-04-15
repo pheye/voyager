@@ -104,5 +104,10 @@ Route::group(['as' => 'voyager.'], function () {
         });
 
         Route::resource('database', $namespacePrefix.'VoyagerDatabaseController');
+
+        Route::get('/permission_map', $namespacePrefix.'VoyagerRoleController@showPermissionMap')->name('permission_map');
+        Route::post('/permission_map', $namespacePrefix.'VoyagerRoleController@storePermissionMap')->name('store_permission_map');
+
+        Route::post('/permission/cache/generate', $namespacePrefix.'VoyagerRoleController@generatePermissionCache')->name('generate_permission_cache');
     });
 });
