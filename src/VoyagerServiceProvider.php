@@ -253,6 +253,9 @@ class VoyagerServiceProvider extends ServiceProvider
         $this->commands(Commands\ControllersCommand::class);
         $this->commands(Commands\AdminCommand::class);
         $this->commands(Commands\ResetCommand::class);
+        $this->commands(Commands\UpgradeCommand::class);
+        $this->commands(Commands\UpgradeCommand::class);
+        $this->commands(Commands\CheckUsageCommand::class);
     }
 
     /**

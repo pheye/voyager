@@ -18,6 +18,7 @@ use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\Role;
 use TCG\Voyager\Models\Setting;
 use TCG\Voyager\Models\User;
+use TCG\Voyager\Models\Policy;
 
 class Voyager
 {
@@ -47,6 +48,7 @@ class Voyager
         'Role'       => Role::class,
         'Setting'    => Setting::class,
         'User'       => User::class,
+        'Policy'     => Policy::class
     ];
 
     public function __construct()

@@ -9,6 +9,9 @@ use TCG\Voyager\Traits\VoyagerUser;
 class User extends AuthUser
 {
     use VoyagerUser;
+    const STATE_WAITING = 0;
+    const STATE_ACTIVATED = 1;
+    const STATE_FREEZED = 2;
 
     protected $guarded = [];
 
