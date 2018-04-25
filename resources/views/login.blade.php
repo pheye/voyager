@@ -55,7 +55,7 @@
                 @endif
             </div>
 
-            <form action="{{ route('voyager.login') }}" method="POST">
+            <form action="{{ route('voyager.login', [], false) }}" method="POST">
             {{ csrf_field() }}
             <div class="group">      
               <input type="text" name="email" value="{{ old('email') }}" required>
