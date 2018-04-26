@@ -8,6 +8,7 @@ use TCG\Voyager\Models\Role;
 use TCG\Voyager\Models\Policy;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache; 
+use TCG\Voyager\Models\Permission;
 use Log;
 
 /**
