@@ -63,4 +63,18 @@ class VoyagerController extends Controller
     {
         return view('voyager::profile');
     }
+
+    public function uploadForKindEditor(Request $request)
+    {
+        $file = $request->file('imgFile');
+        $ext = $file->guessClientExtension();
+        $filename = Str::random(20);
+        $fullPath = 'pages/'.$filename.'.'.$file->getClientOriginalExtension();
+
+        if (!($path = $file->store("upload", config('voyager.storage.disk')))) {
+        /* if (!Storage::disk(config('voyager.storage.disk'))->put($fullPath, $file->path(), 'public')) { */
+            return response()->json(['error' => 1, 'message' => 'upload failed']);
+        } 
+        return response()->json(['error' => 0, 'url' => Storage::disk(config('voyager.storage.disk'))->url("$path")]);
+    }
 }

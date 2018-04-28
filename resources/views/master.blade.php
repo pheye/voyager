@@ -25,16 +25,17 @@
     <link rel="stylesheet" type="text/css" href="{{ config('voyager.assets_path') }}/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ config('voyager.assets_path') }}/css/themes/flat-blue.css">
 
-    <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic"> -->
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ config('voyager.assets_path') }}/images/logo-icon.png" type="image/x-icon">
 
     <!-- CSS Fonts -->
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/fonts/voyager/styles.css">
     <script type="text/javascript" src="{{ config('voyager.assets_path') }}/lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/kindeditor/kindeditor-all-min.js"></script>
+    <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/kindeditor/lang/zh-CN.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+
 
     <!-- 目前手动引用vue，后续它们将被打包进webpack中 -->
     <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
