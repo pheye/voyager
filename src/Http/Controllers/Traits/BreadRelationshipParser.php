@@ -91,6 +91,7 @@ trait BreadRelationshipParser
 
         if (!empty($relations) && array_filter($relations)) {
             foreach ($relations as $field => $relation) {
+                $rawField = $field;
                 if ($this->patchId[$field]) {
                     $field = snake_case($field).'_id';
                 } else {
@@ -98,6 +99,10 @@ trait BreadRelationshipParser
                 }
 
                 $bread_data = $dataType->browseRows->where('field', $field)->first();
+                if (!$bread_data) {
+                    $field = $item->$rawField()->getForeignKey();
+                    $bread_data = $dataType->browseRows->where('field', $field)->first();
+                }
                 $relationData = json_decode($bread_data->details)->relationship;
 
                 if (!is_object($item[$field])) {
