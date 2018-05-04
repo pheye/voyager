@@ -90,8 +90,6 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
         @endif
         - {{ Voyager::getVersion() }}
     </div>
-<!-- vue 示例 -->
-<!-- @{{ message }} -->
 </footer>
 <!-- Javascript Libs -->
 
