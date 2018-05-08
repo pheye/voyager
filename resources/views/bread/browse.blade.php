@@ -181,7 +181,7 @@
                         this {{ strtolower($dataType->display_name_singular) }}?</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('voyager.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">
+                    <form action="{{ route('voyager.'.$dataType->slug.'.index', [], false) }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
