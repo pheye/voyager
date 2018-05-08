@@ -35,7 +35,7 @@
                     <div class="panel-body table-responsive">
 
                     <form role="form"
-                            action="{{ route('voyager.'.$dataType->slug.'.batch') }}"
+                            action="{{ route('voyager.'.$dataType->slug.'.batch', [], false) }}"
                             method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" action="delete" />
@@ -220,14 +220,10 @@
         $('td').on('click', '.delete', function (e) {
             var form = $('#delete_form')[0];
 
-            if (!deleteFormAction) { // Save form action initial value
-                deleteFormAction = form.action;
-            }
+            deleteFormAction = "{{ route('voyager.'.$dataType->slug.'.index', [], false) }}"; // form.action;
 
-            form.action = deleteFormAction.match(/\/[0-9]+$/)
-                ? deleteFormAction.replace(/([0-9]+$)/, $(this).data('id'))
-                : deleteFormAction + '/' + $(this).data('id');
-            console.log(form.action);
+            form.action = deleteFormAction + '/' + $(this).data('id');
+            console.log(form.action, deleteFormAction);
 
             $('#delete_modal').modal('show');
         });

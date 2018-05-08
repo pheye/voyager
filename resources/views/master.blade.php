@@ -31,8 +31,6 @@
     <!-- CSS Fonts -->
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/fonts/voyager/styles.css">
     <script type="text/javascript" src="{{ config('voyager.assets_path') }}/lib/js/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/kindeditor/kindeditor-all-min.js"></script>
-    <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/kindeditor/lang/zh-CN.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 
