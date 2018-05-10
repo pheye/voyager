@@ -29,7 +29,7 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form"
-                            action="@if(isset($dataTypeContent->id)){{ route('voyager.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('voyager.'.$dataType->slug.'.store') }}@endif"
+                            action="@if(isset($dataTypeContent->id)){{ route('voyager.'.$dataType->slug.'.update', $dataTypeContent->id, false) }}@else{{ route('voyager.'.$dataType->slug.'.store', [], false) }}@endif"
                             method="POST" enctype="multipart/form-data">
                         <!-- PUT Method if we are editing -->
                         @if(isset($dataTypeContent->id))
