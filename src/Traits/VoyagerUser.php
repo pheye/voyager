@@ -475,7 +475,7 @@ trait VoyagerUser
             $userPolicy = $this->getPolicy($key);
             if ($userPolicy)
                 $policy[1] = $userPolicy->pivot->value;
-            $usage = $this->getUsage($key);
+            $usage = $this->usage[$key];
             if (!$usage || $usage[0] != $policy[0] || $usage[1] != $policy[1] || isset($usage[4])) {
                 throw new \ErrorException("({$this->email})should be: $key-" . json_encode($policy) . ", but now is : " . ($usage ? json_encode($usage) : "no usage"), 1000);
             }
