@@ -77,4 +77,9 @@ class VoyagerController extends Controller
         } 
         return response()->json(['error' => 0, 'url' => Storage::disk(config('voyager.storage.disk'))->url("$path")]);
     }
+
+    public function redirect(Request $request)
+    {
+        return view('voyager::redirect', ['link' => $request->link]);
+    }
 }

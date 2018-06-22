@@ -18,21 +18,13 @@
 - Number类型：增加"step: 0.01" 参数，以支持小数点的编辑。
 - Textarea类型：支持JSON格式的处理，当数据库字段类型为JSON，并且在Laravel中设置`protected $casts=['content' => 'json']`这样的处理时，Voyager会编辑时会报错。通过在选项中增加`{"json": true}`，即可支持JSON数据的直接编辑。
 - 前端支持vue，并通过webpack打包管理
-
+- 生成权限、策略菜单
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
 # **V**oyager - The Missing Laravel Admin
-Made with ❤️ by [The Control Group](https://www.thecontrolgroup.com)
+官方文档: https://the-control-group.github.io/voyager/
 
-![Voyager Screenshot](https://raw.githubusercontent.com/the-control-group/voyager/gh-pages/images/screenshot.png)
-
-Website & Documentation: https://the-control-group.github.io/voyager/
-
-Video Demo Here: https://devdojo.com/series/laravel-voyager-010/
-
-Join our Slack chat: https://voyager-slack-invitation.herokuapp.com/
-
-View the Voyager Cheat Sheet: https://voyager-cheatsheet.ulties.com/
+常用操作表: https://voyager-cheatsheet.ulties.com/
 
 <hr>
 
@@ -109,3 +101,12 @@ php artisan voyager:admin your@email.com --create
 ```
 
 And you will be prompted for the users name and password.
+
+# 生成扩展菜单
+默认安装的后台没有权限相关的菜单，可通过执行如下命令生成更多的菜单。
+比如角色、权限、权限视图、策略
+
+```bash
+php artisan vendor:publish --provider='TCG\Voyager\VoyagerServiceProvide`
+php artisan db:seed --class=ExtendVoyagerAdminSeeder
+```
