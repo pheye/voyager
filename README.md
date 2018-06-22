@@ -107,6 +107,7 @@ And you will be prompted for the users name and password.
 比如角色、权限、权限视图、策略
 
 ```bash
-php artisan vendor:publish --provider='TCG\Voyager\VoyagerServiceProvide`
+php artisan vendor:publish --provider='TCG\Voyager\VoyagerServiceProvider' --force
+composer dump-autoload
 php artisan db:seed --class=ExtendVoyagerAdminSeeder
 ```
