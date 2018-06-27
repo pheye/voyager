@@ -14,7 +14,7 @@
 
         // With Children Attributes
         if(!$item->children->isEmpty()) {
-            $linkAttributes =  'href="#' . str_slug($item->title, '-') .'-dropdown-element" data-toggle="collapse"';
+            $linkAttributes =  'href="#' . str_slug("menu{$item->id}", '-') .'-dropdown-element" data-toggle="collapse"';
             array_push($listItemClass,'dropdown');
         }else{
             $linkAttributes =  'href="' . url($item->link()) .'"';
@@ -60,7 +60,7 @@
             <span class="title">{{ $item->title }}</span>
         </a>
         @if(!$item->children->isEmpty())
-        <div id="{{ str_slug($item->title, '-') }}-dropdown-element" class="panel-collapse collapse">
+        <div id="{{ str_slug("menu{$item->id}", '-') }}-dropdown-element" class="panel-collapse collapse">
             <div class="panel-body">
                 @include('voyager::menu.admin_menu', ['items' => $item->children, 'options' => $options, 'innerLoop' => true])
             </div>
