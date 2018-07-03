@@ -177,7 +177,7 @@
     </div>
 
     <div class="page-content container-fluid">
-        <form action="{{ route('voyager.settings.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('voyager.settings.update', [], false) }}" method="POST" enctype="multipart/form-data">
             {{ method_field("PUT") }}
             {{ csrf_field() }}
             <div class="panel">
@@ -275,7 +275,7 @@
                 <h3 class="panel-title"><i class="voyager-plus"></i> New Setting</h3>
             </div>
             <div class="panel-body">
-                <form action="{{ route('voyager.settings.store') }}" method="POST">
+                <form action="{{ route('voyager.settings.store', [], false) }}" method="POST">
                     {{ csrf_field() }}
                     <div class="col-md-4">
                         <label for="display_name">Name</label>
@@ -373,7 +373,7 @@
                     </h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('voyager.settings.delete', ['id' => '__id']) }}" id="delete_form" method="POST">
+                    <form action="{{ route('voyager.settings.delete', ['id' => '__id'], false) }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Yes, Delete This Setting">
@@ -401,7 +401,7 @@
 
 @section('javascript')
     <iframe id="form_target" name="form_target" style="display:none"></iframe>
-    <form id="my_form" action="{{ route('voyager.upload') }}" target="form_target" method="POST" enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">
+    <form id="my_form" action="{{ route('voyager.upload', [], false) }}" target="form_target" method="POST" enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">
         {{ csrf_field() }}
         <input name="image" id="upload_file" type="file" onchange="$('#my_form').submit();this.value='';">
         <input type="hidden" name="type_slug" id="type_slug" value="settings">
