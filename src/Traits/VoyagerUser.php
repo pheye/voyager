@@ -397,10 +397,10 @@ trait VoyagerUser
      */                                      
     public function getMergedPermissions()   
     {                                        
-        $rolePermissions = $this->role->permissions;                                      
+        $rolePermissions = $this->role->permissions;
         $userPermissions = $this->permissions()->wherePivot('expired', null)->orWherePivot('expired', '>', Carbon::now())->get();                                                    
         $merged = $rolePermissions->merge($userPermissions);                              
-        return $merged;                      
+        return $merged;
     }                                        
 
     /**                                      

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     protected $guarded = [];
-    protected $hidden = ['desc'];
+    protected $hidden = ['desc', 'order', 'created_at', 'updated_at'];
 
     public function roles()
     {
