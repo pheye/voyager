@@ -77,6 +77,9 @@ abstract class Controller extends BaseController
                 }
                 if ($row->field == 'password') {
                     $content = $data->{$row->field};
+                    if ($request->isMethod('PUT')) {
+                        unset($rules[$row->field]);
+                    }
                 }
             }
 
