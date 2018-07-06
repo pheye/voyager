@@ -54,7 +54,7 @@
                                         <td>  
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="{{$permission->id}}" name="{{$role->name . '_permission' . '[' . $permission->key . ']'}}" @if ($role->can($permission->key)) checked @endif/>
+                                                    <input type="checkbox" value="{{$permission->id}}" name="{{$role->name . '[permission]' . '[' . $permission->key . ']'}}" @if ($role->can($permission->key)) checked @endif/>
                                                 </label>
                                             </div> 
                                             @if ($groupedPolicies->has($permission->key))
@@ -62,7 +62,7 @@
                                                 <div class="text-center">策略值</div>
                                                 <div class="form-group">
                                                     <label>数值:</label>
-                                                    <input class="form-control" type="text" name="{{$role->name . '_policy' . '['. $permission->key . ']' . '[value]'}}" @if (isset($role->groupedPolicies[$permission->key]))  value="{{$role->groupedPolicies[$permission->key][1]}}" @endif />
+                                                    <input class="form-control" type="text" name="{{$role->name . '[policy]' . '['. $permission->key . ']' . '[value]'}}" @if (isset($role->groupedPolicies[$permission->key]))  value="{{$role->groupedPolicies[$permission->key][1]}}" @endif />
                                                 </div>
                                             </div>
                                             @endif

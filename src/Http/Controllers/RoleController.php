@@ -47,11 +47,11 @@ class RoleController extends Controller
         $roles = Role::where('id', '>', 2)->with('policies')->get();
         // 权限与策略分开操作
         foreach ($roles as $role) {
-            if (!$request->has($role->name . '_permission'))
+            if (!$request->has($role->name))
                 continue;
             // 角色与权限之间的关系
             $oldPermissions = $role->permissions->groupBy('key');
-            $newPermissions = new Collection($request[$role->name . '_permission']);
+            $newPermissions = new Collection($request[$role->name]['permission']);
 
             // 不要重建permission_role，这样对数据库操作太频繁
             // new有,old没有，添加
@@ -70,10 +70,10 @@ class RoleController extends Controller
         }
 
         foreach ($roles as $role) {
-            if (!$request->has($role->name . '_policy'))
+            if (!$request->has($role->name))
                 continue;
             $oldPolicies = new Collection($role->generateGroupedPolicies());
-            $newPolicies = new Collection($request[$role->name . '_policy']);
+            $newPolicies = new Collection($request[$role->name]['policy']);
 
             // 不要重建policy_role，这样对数据库操作太频繁
             // new有,old没有，添加
