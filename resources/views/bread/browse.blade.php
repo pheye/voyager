@@ -154,7 +154,7 @@
                                 <div role="status" class="show-res" aria-live="polite">{{ trans('voyager::bread.summary', ['first' =>  $dataTypeContent->firstItem(),  'last' =>  $dataTypeContent->lastItem(), 'total' =>  $dataTypeContent->total()]) }}</div>
                             </div>
                             <div class="pull-right">
-                                {{ $dataTypeContent->links() }}
+                                {{ $dataTypeContent->appends(Request::query())->links() }}
                             </div>
                         @endif
                         <div class="clearfix" ></div>

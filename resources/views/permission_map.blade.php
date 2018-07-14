@@ -17,7 +17,7 @@
                     <div class="panel-body table-responsive">
 
                     <form role="form"
-                            action="{{ route('voyager.store_permission_map') }}"
+                            action="{{ route('voyager.store_permission_map', [], false) }}"
                             method="POST">
                         {{ csrf_field() }}
                         <table class="table table-hover">

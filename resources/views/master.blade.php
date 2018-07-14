@@ -5,10 +5,6 @@
     <title>@yield('page_title',Voyager::setting('admin_title') . " - " . Voyager::setting('admin_description'))</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <!-- Fonts -->
-    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Lato:300,400,700,900' rel='stylesheet' -->
-    <!--       type='text/css'> -->
-
     <!-- CSS Libs -->
     <link rel="stylesheet" type="text/css" href="{{ config('voyager.assets_path') }}/lib/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ config('voyager.assets_path') }}/lib/css/animate.min.css">
@@ -31,8 +27,10 @@
     <!-- CSS Fonts -->
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/fonts/voyager/styles.css">
     <script type="text/javascript" src="{{ config('voyager.assets_path') }}/lib/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <link href="{{ config('voyager.assets_path') }}/css/jquery-ui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/jquery-ui.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css"> -->
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script> -->
 
 
     <!-- 目前手动引用vue，后续它们将被打包进webpack中 -->

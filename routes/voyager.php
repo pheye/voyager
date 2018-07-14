@@ -110,6 +110,6 @@ Route::group(['as' => 'voyager.'], function () {
 
         Route::post('/permission/cache/generate', $namespacePrefix.'VoyagerRoleController@generatePermissionCache')->name('generate_permission_cache');
 
-        Route::post('/kindeditor/upload', $namespacePrefix.'VoyagerController@uploadForKindEditor')->name('kindeditor_upload');
+        /* Route::post('/kindeditor/upload', $namespacePrefix.'VoyagerController@uploadForKindEditor')->name('kindeditor_upload'); */
     });
 });
