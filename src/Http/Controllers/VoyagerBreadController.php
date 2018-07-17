@@ -58,8 +58,17 @@ class VoyagerBreadController extends Controller
             //Replace relationships' keys for labels and create READ links if a slug is provided.
             $dataTypeContent = $this->resolveRelations($dataTypeContent, $dataType);
         } else {
+            $builder = DB::table($dataType->name);
+            if ($request->has('order')) {   
+                $dir = substr($request->order, 0, 1);
+                $field = $dir == '-' ? substr($request->order, 1) : $request->order;
+                $builder = $builder->orderBy($field, $dir == '-' ? 'DESC' : 'ASC');
+            }
+            if ($request->has('searchKey') && $request->has('searchValue')) {
+                $builder = $builder->where($request->searchKey, 'like', '%'. $request->searchValue . '%');
+            }
             // If Model doesn't exist, get data from table name
-            $dataTypeContent = call_user_func([DB::table($dataType->name), $getter]);
+            $dataTypeContent = call_user_func([$builder, $getter]);
         }
 
         $view = 'voyager::bread.browse';
