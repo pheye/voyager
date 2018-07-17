@@ -56,7 +56,7 @@
                             <tbody>
                                 @foreach($dataTypeContent as $data)
                                 <tr>
-                                    @if (isset($data['id']))
+                                    @if (is_array($data) && isset($data['id']))
                                     <td> <input type="checkbox" name="voyager.selects[]" value="{{$data['id']}}" /> </td>
                                     @else
                                     <td>&nbsp;</td>
