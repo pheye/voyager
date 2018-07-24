@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
 use TCG\Voyager\Traits\AlertsMessages;
+use Carbon\Carbon;
 
 abstract class Controller extends BaseController
 {
@@ -264,7 +265,8 @@ abstract class Controller extends BaseController
                     if (empty($request->input($row->field))) {
                         $content = null;
                     } else {
-                        $content = gmdate('Y-m-d H:i:s', strtotime($request->input($row->field)));
+                        /* $content = gmdate('Y-m-d H:i:s', strtotime($request->input($row->field))); */
+                           $content = (new Carbon($request->input($row->field)))->toDateTimeString();
                     }
                 /* } */
                 break;
