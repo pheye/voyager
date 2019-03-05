@@ -1,3 +1,6 @@
+# DEPRECATED!!!
+<h1 style="color:red;">Laravel官方出了Nova管理后台以后，经过测试，在设计上远远优于Voyager。并且Voyager中长期得不到解决的问题，在Nova那边已经解决了。因此，改为使用Nova作为管理后台，本包不再维护。</h1>
+
 # 改造说明
 
 `Voyager`是个很优秀的项目，然而却有一些问题限制了它的使用：
